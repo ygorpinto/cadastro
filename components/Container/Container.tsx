@@ -2,10 +2,12 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 
 import { ContainerStyles } from '../Container/ContainerStyles'
+import { InfoContainer } from "../InfoContainer/InfoContainer";
 
 export const Container = () => {
 
     const [info, setInfo] = useState([]);
+    const [status, setStatus] = useState(false);
 
     useEffect(() => {
         fetchData();
@@ -17,17 +19,24 @@ export const Container = () => {
         setInfo(data);
     }
 
+    const handleStatus = () => {
+        setStatus(status?false:true);
+    }
+
     return (
+        <>
+            {status && <InfoContainer func={handleStatus}/>}
         <ContainerStyles>
             <div className="mainData">
                 {info.map((item) => (
                     <>
-                        <div className="name">
+                        <div onClick={handleStatus} className="name">
                             <p>{item.name}</p>
                         </div>
                     </>
                 ))}
             </div>
         </ContainerStyles>
+        </>
     )
 }
