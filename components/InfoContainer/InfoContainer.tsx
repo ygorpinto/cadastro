@@ -20,32 +20,31 @@ export const InfoContainer = () => {
             {data.map(item => (
                 <>
                     <div className="clientes">
-                        <p></p>
+                        <p>Quais clientes você pode ter contato ao longo da semana?</p>
                         {item.clientes}
                     </div>
                     <div className="fundos">
-                        <p></p>
+                        <p>Quais tipos de fundo você teve contato esta semana?</p>
                         {item.fundos}
                     </div>
                     <div className="reuniao">
-                        <p></p>
+                        <p>Participou de alguma reunião com cliente? Qual era o problema que estava sendo resolvido? Qual a causa raiz do problema (erro nosso ou erro de quem está usandoa plataforma)? alguma solução foi alcançada?</p>
                         {item.reuniao}
                     </div>
                     <div className="sistema">
-                        <p></p>
+                        <p>Você utilizou o sistema esta semana? Qual tela? Qual o objetivo do que você fez?</p>
                         {item.sistema}
                     </div>
                     <div className="performit">
-                        <p></p>
+                        <p>Qual sua 1ª impressão com o PerformIt? Na sua opinião qual foi a parte do sistema mais complexa de entender até então? E a mais simples?</p>
                         {item.performit}
                     </div>
                     <div className="conhecimento">
-                        <p></p>
+                        <p>Compartilhe 1 conhecimento adquirido esta semana sobre mercado financeiro.</p>
                         {item.conhecimento}
                     </div>
                 </>
             ))}
-
         </div>
     )
 }

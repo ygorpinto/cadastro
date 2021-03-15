@@ -12,6 +12,8 @@ header {
         font-size:2.7rem;
         font-family: 'Montserrat', sans-serif;
         color:#295965;
+
+        text-shadow:1px 1px #02B2A3;
     }
     .logo {
         left:1%;

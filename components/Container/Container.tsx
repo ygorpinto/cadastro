@@ -23,8 +23,7 @@ export const Container = () => {
                 {info.map((item) => (
                     <>
                         <div className="name">
-                            <p>Nome:</p>
-                            {item.name}
+                            <p>{item.name}</p>
                         </div>
                     </>
                 ))}
