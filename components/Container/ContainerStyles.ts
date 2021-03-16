@@ -27,6 +27,8 @@ width:100%;
             background-color:#295965;
             color:#fff;
         }
+
+        cursor: pointer;
     }
     
 }

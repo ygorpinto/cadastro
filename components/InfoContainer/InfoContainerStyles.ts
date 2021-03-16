@@ -32,6 +32,8 @@ position:absolute;
         border:none;
         background-color:transparent;
         width:2rem;
+
+        cursor: pointer;
     }
 
     .itens {

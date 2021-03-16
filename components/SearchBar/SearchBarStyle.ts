@@ -30,6 +30,8 @@ export const SearchBarStyles = styled.div`
             border:none;
             background-color:transparent;
             width:2rem;
+
+            cursor: pointer;
         }
 
         form {
@@ -60,6 +62,8 @@ export const SearchBarStyles = styled.div`
                 border:none;
                 color:#fff;
                 font-family: 'Montserrat', sans-serif;
+
+                cursor: pointer;
 
                 :hover{
                     background-color:#02b2a3;

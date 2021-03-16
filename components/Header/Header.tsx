@@ -13,7 +13,7 @@ export const Header = () => {
 return (
     <HeaderStyle>
         <header>
-        {isSearchBar && <SearchBar/>}
+        {isSearchBar && <SearchBar func={handleSearchBar}/>}
             <img className="logo" src="logo.png"/>
             <h1>Acompanhamento Semanal</h1>
             <button onClick={handleSearchBar} className="menu"><img src="menu.svg"/></button>
