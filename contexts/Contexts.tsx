@@ -11,13 +11,28 @@ interface contextModel {
     user:string;
     isSearchBar:boolean;
     status:boolean;
+    infoOne:Array<any>;
+    infoObj:infoUser;
 }
+
+interface infoUser {
+    name:string;
+    clientes:string;
+    fundos:string;
+    reuniao:string;
+    sistema:string;
+    performit:string;
+    conhecimento:string;
+}
+
 
 export const Contexts = createContext({} as contextModel);
 
 export const ContextsProvider = ({children}) => {
 
     const [info, setInfo] = useState([]);
+    const [infoOne, setInfoOne] = useState([]);
+    const [infoObj,setInfoObj] = useState([]);
     const [status, setStatus] = useState(false);
     const [isSearchBar, setIsSearchBar] = useState(false);
     const [user,setUser] = useState('');
@@ -37,10 +52,13 @@ export const ContextsProvider = ({children}) => {
     }
 
     const fetchOne = async (e) => {
+        const userResult = [];
         e.preventDefault();
-        const res = await axios.get(`https://relatorio-ivt.herokuapp.com/api/list/${"oi"}`)
+        const res = await axios.get(`https://relatorio-ivt.herokuapp.com/api/list/${user}`)
         const result = await res.data;
-        console.log(result)
+        userResult.push(result)
+        setInfoOne(userResult);
+        setInfoObj(result);
     }
 
     return (
@@ -53,7 +71,9 @@ export const ContextsProvider = ({children}) => {
             user,
             setUser,
             isSearchBar,
-            status
+            status,
+            infoOne,
+            infoObj
         }}>
             {children}
         </Contexts.Provider>

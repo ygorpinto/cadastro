@@ -5,7 +5,7 @@ import { InfoContainer } from "../InfoContainer/InfoContainer"
 
 export const Container = () => {
 
-    const {handleStatus,fetchData,info,status} = useContext(Contexts);
+    const {handleStatus,fetchData,info,status,infoOne} = useContext(Contexts);
 
     useEffect(() => {
         fetchData();
@@ -16,7 +16,7 @@ export const Container = () => {
             {status && <InfoContainer/>}
         <ContainerStyles>
             <div className="mainData">
-                {info.map((item) => (
+                {infoOne.map((item) => (
                     <>
                         <div onClick={handleStatus} className="name">
                             <p>{item.name}</p>
