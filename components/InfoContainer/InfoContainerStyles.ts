@@ -9,9 +9,10 @@ position:absolute;
 
     display:flex;
     flex-direction:column;
-    align-items:center;
 
     background-color:#fff;
+    font-family: 'Montserrat', sans-serif;
+    color:#295965;
 
     height:100vh;
     width:100%;
@@ -25,12 +26,20 @@ position:absolute;
         position:absolute;
 
         right:1.2%;
-        top:5%;
+        top:8%;
 
         display:flex;
         border:none;
         background-color:transparent;
         width:2rem;
+    }
+
+    .itens {
+       margin:5rem 0; 
+
+       .index {
+           text-align:center;
+       }
     }
 
 }

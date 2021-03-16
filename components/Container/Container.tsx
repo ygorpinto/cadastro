@@ -3,11 +3,13 @@ import { useEffect, useState } from "react"
 
 import { ContainerStyles } from '../Container/ContainerStyles'
 import { InfoContainer } from "../InfoContainer/InfoContainer";
+import { SearchBar } from "../SearchBar/SearchBar";
 
 export const Container = () => {
 
     const [info, setInfo] = useState([]);
     const [status, setStatus] = useState(false);
+   
 
     useEffect(() => {
         fetchData();
@@ -24,7 +26,7 @@ export const Container = () => {
     }
 
     return (
-        <>
+        <>  
             {status && <InfoContainer func={handleStatus}/>}
         <ContainerStyles>
             <div className="mainData">

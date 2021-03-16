@@ -20,33 +20,34 @@ export const InfoContainer = ({func}) => {
         <InfoContainerStyles>
         <div className="info">
             <button onClick={func}><img src="cancel.svg"/></button>
-            {data.map(item => (
-                <>
+            {data.map((item,index) => (
+                <div className="itens">
+                    <h3 className="index">{index+1}º semana.</h3>
                     <div className="clientes">
-                        <p>Quais clientes você pode ter contato ao longo da semana?</p>
+                        <strong>Quais clientes você pode ter contato ao longo da semana?</strong>
                         <p>{item.clientes}</p>
                     </div>
                     <div className="fundos">
-                        <p>Quais tipos de fundo você teve contato esta semana?</p>
+                        <strong>Quais tipos de fundo você teve contato esta semana?</strong>
                         <p>{item.fundos}</p> 
                     </div>
                     <div className="reuniao">
-                        <p>Participou de alguma reunião com cliente? Qual era o problema que estava sendo resolvido? Qual a causa raiz do problema (erro nosso ou erro de quem está usandoa plataforma)? alguma solução foi alcançada?</p>
+                        <strong>Participou de alguma reunião com cliente? Qual era o problema que estava sendo resolvido? Qual a causa raiz do problema (erro nosso ou erro de quem está usandoa plataforma)? alguma solução foi alcançada?</strong>
                         <p>{item.reuniao}</p>
                     </div>
                     <div className="sistema">
-                        <p>Você utilizou o sistema esta semana? Qual tela? Qual o objetivo do que você fez?</p>
+                        <strong>Você utilizou o sistema esta semana? Qual tela? Qual o objetivo do que você fez?</strong>
                         <p>{item.sistema}</p> 
                     </div>
                     <div className="performit">
-                        <p>Qual sua 1ª impressão com o PerformIt? Na sua opinião qual foi a parte do sistema mais complexa de entender até então? E a mais simples?</p>
+                        <strong>Qual sua 1ª impressão com o PerformIt? Na sua opinião qual foi a parte do sistema mais complexa de entender até então? E a mais simples?</strong>
                         <p>{item.performit}</p>
                     </div>
                     <div className="conhecimento">
-                        <p>Compartilhe 1 conhecimento adquirido esta semana sobre mercado financeiro.</p>
+                        <strong>Compartilhe 1 conhecimento adquirido esta semana sobre mercado financeiro.</strong>
                         <p>{item.conhecimento}</p>
                     </div>
-                </>
+                </div>
             ))}
         </div>
         </InfoContainerStyles>
