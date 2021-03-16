@@ -5,7 +5,7 @@ height:80vh;
 width:100%;
 
 .mainData {
-    margin:3rem 0;
+    margin:5rem 0;
     height:80vh;
     width:100%;
 

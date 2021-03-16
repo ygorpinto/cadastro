@@ -13,6 +13,21 @@ interface contextModel {
     status:boolean;
     infoOne:Array<any>;
     infoObj:infoUser;
+    isAllActive:boolean;
+    setIsAllActive:Dispatch<SetStateAction<boolean>>;
+    setIsAddActive:Dispatch<SetStateAction<boolean>>;
+    isAddActive:boolean;
+    handleAddUser:()=>void;
+    handleShowAll:()=>void;
+    setName:Dispatch<SetStateAction<string>>;
+    setTeam:Dispatch<SetStateAction<string>>;
+    setClients:Dispatch<SetStateAction<string>>;
+    setFounds:Dispatch<SetStateAction<string>>;
+    setMeet:Dispatch<SetStateAction<string>>;
+    setSystem:Dispatch<SetStateAction<string>>;
+    setPerformit:Dispatch<SetStateAction<string>>;
+    setKnowlodge:Dispatch<SetStateAction<string>>;
+    createRegister:(e)=>void
 }
 
 interface infoUser {
@@ -35,14 +50,29 @@ export const ContextsProvider = ({children}) => {
     const [infoObj,setInfoObj] = useState([]);
     const [status, setStatus] = useState(false);
     const [isSearchBar, setIsSearchBar] = useState(false);
-    const [user,setUser] = useState('');
+    const [isAllActive, setIsAllActive] = useState(false);
+    const [isAddActive, setIsAddActive] = useState(false);
+    const [user,setUser] = useState("");
+    const [name,setName] = useState("");
+    const [team,setTeam] = useState("");
+    const [clients,setClients] = useState("");
+    const [founds,setFounds] = useState("");
+    const [meet,setMeet] = useState("");
+    const [system,setSystem] = useState("");
+    const [performit,setPerformit] = useState("");
+    const [knowlodge, setKnowlodge] = useState("");
    
     const handleStatus = async () => {
         setStatus(status?false:true);
-    }
-
+        }
     const handleSearchBar = () => {
             setIsSearchBar(isSearchBar?false:true);
+        }
+    const handleShowAll = () => {
+            setIsAllActive(isAllActive?false:true);
+        }
+    const handleAddUser = () => {
+            setIsAddActive(isAddActive?false:true);
         }
 
     const fetchData = async () => {
@@ -61,6 +91,21 @@ export const ContextsProvider = ({children}) => {
         setInfoObj(result);
     }
 
+    const createRegister = (e) => {
+        e.preventDefault();
+        axios.post("https://relatorio-ivt.herokuapp.com/api/add",{
+            name:name,
+            clientes:clients,
+            fundos:founds,
+            reuniao:meet,
+            sistema:system,
+            performit:performit,
+            conhecimento:knowlodge
+        })
+        alert(`${name} seu registro foi salvo com sucesso!`);
+        handleAddUser();
+    }
+
     return (
         <Contexts.Provider value={{
             fetchOne,
@@ -73,7 +118,28 @@ export const ContextsProvider = ({children}) => {
             isSearchBar,
             status,
             infoOne,
-            infoObj
+            infoObj,
+            isAllActive,
+            handleShowAll,
+            isAddActive,
+            handleAddUser,
+            name,
+            team,
+            clients,
+            founds,
+            meet,
+            system,
+            performit,
+            knowlodge,
+            setName,
+            setTeam,
+            setClients,
+            setFounds,
+            setMeet,
+            setSystem,
+            setPerformit,
+            setKnowlodge,
+            createRegister
         }}>
             {children}
         </Contexts.Provider>
