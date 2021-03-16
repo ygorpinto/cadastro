@@ -1,26 +1,16 @@
-import axios from "axios";
-import { useEffect, useState } from "react"
+import { useContext } from "react";
+import { Contexts } from "../../contexts/Contexts";
 import { InfoContainerStyles } from "./InfoContainerStyles";
 
-export const InfoContainer = ({func}) => {
+export const InfoContainer = () => {
 
-    const [data, setData] = useState([]);
-
-    useEffect(() => {
-        bringData();
-    }, [])
-
-    const bringData = async () => {
-        const res = await axios.get('https://relatorio-ivt.herokuapp.com/api/listall')
-        const itens = await res.data;
-        setData(itens)
-    }
+    const {handleStatus,info} = useContext(Contexts);
 
     return (
         <InfoContainerStyles>
         <div className="info">
-            <button onClick={func}><img src="cancel.svg"/></button>
-            {data.map((item,index) => (
+            <button onClick={handleStatus}><img src="cancel.svg"/></button>
+            {info.map((item,index) => (
                 <div className="itens">
                     <h3 className="index">{index+1}º semana.</h3>
                     <div className="clientes">
