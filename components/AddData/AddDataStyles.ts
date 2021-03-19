@@ -17,7 +17,6 @@ justify-content:center;
         box-shadow:0.5rem 0.5rem rgba(0,0,0,0.2);
         border-radius:1rem;
 
-        overflow-y:scroll;
 
         h3 {
             text-align:center;
@@ -44,7 +43,7 @@ justify-content:center;
             align-items:center;
 
             label {
-                margin:1rem 0 0 0;
+                margin:2rem 0 0 0;
                 font-size:0.8rem;
                 text-align:center;
                 color:#295965;
@@ -52,7 +51,7 @@ justify-content:center;
             }
             
             input {
-                margin:0.2rem 0 0 0;
+                margin:0.8rem 0 0 0;
                 height:2rem;
                 width:80%;
                 border:none;

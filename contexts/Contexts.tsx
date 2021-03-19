@@ -20,24 +20,13 @@ interface contextModel {
     handleAddUser:()=>void;
     handleShowAll:()=>void;
     setName:Dispatch<SetStateAction<string>>;
-    setTeam:Dispatch<SetStateAction<string>>;
-    setClients:Dispatch<SetStateAction<string>>;
-    setFounds:Dispatch<SetStateAction<string>>;
-    setMeet:Dispatch<SetStateAction<string>>;
-    setSystem:Dispatch<SetStateAction<string>>;
-    setPerformit:Dispatch<SetStateAction<string>>;
-    setKnowlodge:Dispatch<SetStateAction<string>>;
+    setEmail:Dispatch<SetStateAction<string>>;
     createRegister:(e)=>void
 }
 
 interface infoUser {
     name:string;
-    clientes:string;
-    fundos:string;
-    reuniao:string;
-    sistema:string;
-    performit:string;
-    conhecimento:string;
+    email:String;
 }
 
 
@@ -47,20 +36,15 @@ export const ContextsProvider = ({children}) => {
 
     const [info, setInfo] = useState([]);
     const [infoOne, setInfoOne] = useState([]);
-    const [infoObj,setInfoObj] = useState([]);
+    const [infoObj,setInfoObj] = useState({});
     const [status, setStatus] = useState(false);
     const [isSearchBar, setIsSearchBar] = useState(false);
     const [isAllActive, setIsAllActive] = useState(false);
     const [isAddActive, setIsAddActive] = useState(false);
     const [user,setUser] = useState("");
     const [name,setName] = useState("");
-    const [team,setTeam] = useState("");
-    const [clients,setClients] = useState("");
-    const [founds,setFounds] = useState("");
-    const [meet,setMeet] = useState("");
-    const [system,setSystem] = useState("");
-    const [performit,setPerformit] = useState("");
-    const [knowlodge, setKnowlodge] = useState("");
+    const [email,setEmail] = useState("");
+    
    
     const handleStatus = async () => {
         setStatus(status?false:true);
@@ -95,12 +79,7 @@ export const ContextsProvider = ({children}) => {
         e.preventDefault();
         axios.post("https://relatorio-ivt.herokuapp.com/api/add",{
             name:name,
-            clientes:clients,
-            fundos:founds,
-            reuniao:meet,
-            sistema:system,
-            performit:performit,
-            conhecimento:knowlodge
+            email:email
         })
         alert(`${name} seu registro foi salvo com sucesso!`);
         handleAddUser();
@@ -124,21 +103,9 @@ export const ContextsProvider = ({children}) => {
             isAddActive,
             handleAddUser,
             name,
-            team,
-            clients,
-            founds,
-            meet,
-            system,
-            performit,
-            knowlodge,
+            email,
             setName,
-            setTeam,
-            setClients,
-            setFounds,
-            setMeet,
-            setSystem,
-            setPerformit,
-            setKnowlodge,
+            setEmail,
             createRegister
         }}>
             {children}

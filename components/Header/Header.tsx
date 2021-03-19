@@ -11,8 +11,7 @@ return (
     <HeaderStyle>
         <header>
         {isSearchBar && <SearchBar/>}
-            <img className="logo" src="logo.png"/>
-            <h1>Acompanhamento Semanal</h1>
+            <h1>Gerenciamento de Usuários</h1>
             <button onClick={handleSearchBar} className="menu"><img src="menu.svg"/></button>
         </header>
     </HeaderStyle>
