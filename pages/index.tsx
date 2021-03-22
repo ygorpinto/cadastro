@@ -1,19 +1,22 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { Container } from "../components/Container/Container";
 import { Header } from "../components/Header/Header";
-import { Contexts, ContextsProvider } from '../contexts/Contexts'
+import { Loading } from "../components/Loading/Loading";
+import { Contexts, ContextsProvider } from "../contexts/Contexts";
+
 
 export default function Home() {
 
-  const {isLoading,setIsLoading} = useContext(Contexts);
-
+  const {isLoading} = useContext(Contexts);
 
   return (
     <div>
-      <ContextsProvider>
-      <Header/>
-      <Container/>
-      </ContextsProvider>
+      {isLoading ? <Loading/> : (
+        <ContextsProvider>
+        <Header/>
+        <Container/>
+        </ContextsProvider>
+      )}
     </div>
   )
 }

@@ -62,12 +62,17 @@ export const ContextsProvider = ({children}) => {
         fetchData();
         },[]);
 
+        useEffect(()=>{
+            setTimeout(()=>{
+                setIsLoading(false);
+            },1800)
+        },[])
+
+
     const fetchData = async () => {
-        setIsLoading(true);
         const res = await axios.get('https://relatorio-ivt.herokuapp.com/api/listall')
         const data = await res.data;
         setInfo(data);
-        setIsLoading(false);
     }
 
     const fetchOne = async (e) => {
