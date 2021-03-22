@@ -9,6 +9,8 @@ interface contextModel {
     info:Array<any>;
     setUser:Dispatch<SetStateAction<string>>;
     user:string;
+    name:string;
+    email:string;
     isSearchBar:boolean;
     status:boolean;
     infoOne:Array<any>;
@@ -32,7 +34,7 @@ export const ContextsProvider = ({children}) => {
 
     const [info, setInfo] = useState([]);
     const [infoOne, setInfoOne] = useState([]);
-    const [infoObj,setInfoObj] = useState({});
+    const [infoObj,setInfoObj] = useState([]);
     const [status, setStatus] = useState(false);
     const [isSearchBar, setIsSearchBar] = useState(false);
     const [isAllActive, setIsAllActive] = useState(false);
