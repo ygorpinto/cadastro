@@ -13,7 +13,7 @@ export const InfoContainer = () => {
                 <div className="itens">
                     <div className="email">
                         <strong>Email do usuário :</strong>
-                        <p>{infoObj.email}</p>
+                        <p>{infoObj.map(item=>item.email)}</p>
                     </div>
                 </div>
         </div>

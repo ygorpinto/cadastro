@@ -17,6 +17,8 @@ width:100%;
         width:5rem;
         height:3rem;
         
+        color:#295965;
+
         display:flex;
         justify-content:center;
         border-radius:1rem;

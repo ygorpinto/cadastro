@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createContext, Dispatch, SetStateAction, useState } from "react";
+import { createContext, Dispatch, SetStateAction, useEffect, useState } from "react";
 
 interface contextModel {
     fetchOne:(e)=>void
@@ -12,7 +12,7 @@ interface contextModel {
     isSearchBar:boolean;
     status:boolean;
     infoOne:Array<any>;
-    infoObj:infoUser;
+    infoObj:Array<any>;
     isAllActive:boolean;
     setIsAllActive:Dispatch<SetStateAction<boolean>>;
     setIsAddActive:Dispatch<SetStateAction<boolean>>;
@@ -21,14 +21,10 @@ interface contextModel {
     handleShowAll:()=>void;
     setName:Dispatch<SetStateAction<string>>;
     setEmail:Dispatch<SetStateAction<string>>;
-    createRegister:(e)=>void
+    createRegister:(e)=>void;
+    isLoading:boolean;
+    setIsLoading:Dispatch<SetStateAction<boolean>>;
 }
-
-interface infoUser {
-    name:string;
-    email:String;
-}
-
 
 export const Contexts = createContext({} as contextModel);
 
@@ -44,45 +40,54 @@ export const ContextsProvider = ({children}) => {
     const [user,setUser] = useState("");
     const [name,setName] = useState("");
     const [email,setEmail] = useState("");
+    const [isLoading, setIsLoading] = useState(true);
     
    
     const handleStatus = async () => {
         setStatus(status?false:true);
-        }
+        };
     const handleSearchBar = () => {
             setIsSearchBar(isSearchBar?false:true);
-        }
+        };
     const handleShowAll = () => {
             setIsAllActive(isAllActive?false:true);
-        }
+        };
     const handleAddUser = () => {
             setIsAddActive(isAddActive?false:true);
-        }
+        };
+
+        useEffect(()=>{
+        fetchData();
+        },[]);
 
     const fetchData = async () => {
+        setIsLoading(true);
         const res = await axios.get('https://relatorio-ivt.herokuapp.com/api/listall')
         const data = await res.data;
         setInfo(data);
+        setIsLoading(false);
     }
 
     const fetchOne = async (e) => {
-        const userResult = [];
+        setIsLoading(true)
         e.preventDefault();
-        const res = await axios.get(`https://relatorio-ivt.herokuapp.com/api/list/${user}`)
+        const res = await axios.get(`https://relatorio-ivt.herokuapp.com/api/list/${user}`);
         const result = await res.data;
-        userResult.push(result)
-        setInfoOne(userResult);
+        setInfoOne(result);
         setInfoObj(result);
+        setIsLoading(false);
     }
 
     const createRegister = (e) => {
+        setIsLoading(true);
         e.preventDefault();
         axios.post("https://relatorio-ivt.herokuapp.com/api/add",{
             name:name,
             email:email
-        })
+        });
         alert(`${name} seu registro foi salvo com sucesso!`);
         handleAddUser();
+        setIsLoading(false);
     }
 
     return (
@@ -106,7 +111,9 @@ export const ContextsProvider = ({children}) => {
             email,
             setName,
             setEmail,
-            createRegister
+            createRegister,
+            isLoading,
+            setIsLoading
         }}>
             {children}
         </Contexts.Provider>

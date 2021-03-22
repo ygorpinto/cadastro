@@ -16,7 +16,7 @@ export const SearchBar = () => {
                     <form>
                         <input
                             onChange={e => setUser(e.target.value)}
-                            placeholder="Digite o nome do estagiário"
+                            placeholder="Digite o nome do usuário."
                             type="text" />
                         <button onClick={fetchOne}>Buscar</button>
                     </form>

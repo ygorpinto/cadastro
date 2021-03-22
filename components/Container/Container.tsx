@@ -6,11 +6,7 @@ import { InfoContainer } from "../InfoContainer/InfoContainer"
 
 export const Container = () => {
 
-    const { handleStatus, fetchData, info, status, infoOne, isAllActive, isAddActive } = useContext(Contexts);
-
-    useEffect(() => {
-        fetchData();
-    }, [])
+    const { handleStatus, info, status, infoOne, isAllActive, isAddActive } = useContext(Contexts);
 
     if (isAllActive) {
         return (
@@ -20,11 +16,9 @@ export const Container = () => {
                 <ContainerStyles>
                     <div className="mainData">
                         {info.map((item) => (
-                            <>
-                                <div onClick={handleStatus} className="name">
+                                <div onClick={handleStatus} className="name" key="1">
                                     <p>{item.name}</p>
                                 </div>
-                            </>
                         ))}
                     </div>
                 </ContainerStyles>
@@ -39,11 +33,12 @@ export const Container = () => {
             <ContainerStyles>
                 <div className="mainData">
                     {infoOne.map((item) => (
-                        <>
-                            <div onClick={handleStatus} className="name">
+                            <div 
+                            onClick={handleStatus} 
+                            className="name" 
+                            key="1">
                                 <p>{item.name}</p>
                             </div>
-                        </>
                     ))}
                 </div>
             </ContainerStyles>
